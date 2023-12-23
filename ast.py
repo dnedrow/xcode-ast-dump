@@ -44,11 +44,13 @@ def build_parser():
     parser.add_argument("-parseable-output", action="store_true")
     return parser
 
+
 def ast_dump_file(arguments):
     for arg in arguments:
         if arg.startswith("-DAST_DUMP_FILE="):
             return arg.split("=")[1]
-    return None     
+    return None
+
 
 def dump_to_file(filename, command):
     if filename is None:
@@ -58,9 +60,9 @@ def dump_to_file(filename, command):
     sys.stdout.flush()
 
     with open(filename, "w") as outfile:
-        subprocess.call(command, stdout = outfile, stderr = outfile)  
+        subprocess.call(command, stdout=outfile, stderr=outfile)
 
-    return True    
+    return True
 
 
 def main():
@@ -77,6 +79,7 @@ def main():
     if is_in_xcode():
         print("Exiting with 1 to stop the build")
         sys.exit(1)
+
 
 if __name__ == "__main__":
     main()
